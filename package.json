@@ -1,0 +1,26 @@
+{
+  "name": "govtech-gds-qe-technical-assessment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean:allure": "rm -rf allure-results",
+    "test": "npm run clean:allure && npx wdio wdio.conf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@wdio/allure-reporter": "^9.9.0",
+    "@wdio/cli": "^9.9.1",
+    "@wdio/cucumber-framework": "^9.9.0",
+    "@wdio/local-runner": "^9.9.1",
+    "@wdio/mocha-framework": "^9.9.0",
+    "@wdio/selenium-standalone-service": "^8.14.0",
+    "@wdio/spec-reporter": "^9.9.0",
+    "@wdio/visual-service": "^6.3.1",
+    "allure-commandline": "^2.32.2",
+    "chromedriver": "^133.0.1"
+  }
+}
