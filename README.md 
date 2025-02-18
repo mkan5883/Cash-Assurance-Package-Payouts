@@ -1,7 +1,7 @@
 
 # Cash - Assurance Package Payouts Test Automation Framework
 
-A test automation framework using **WebdriverIO, Mocha, Cucumber, Chai, and Selenium WebDriver** for verifying quantum payouts on the **SupportGoWhere (SGW) website**.
+A test automation framework using **WebdriverIO, Mocha, Cucumber, and Selenium WebDriver** for verifying quantum payouts on the **SupportGoWhere (SGW) website**.
 
 ## 📜 Table of Contents
 - [📌 Features](#features)
@@ -13,20 +13,17 @@ A test automation framework using **WebdriverIO, Mocha, Cucumber, Chai, and Sele
 - [📁 Sharing Reports](#sharing-reports)
 - [📌 Test Scenarios](#test-scenarios)
 - [🤝 Contribution](#contribution)
-- [📄 License](#license)
 
 ## 📌 Features
 ✅ **Automated UI Testing** for **SupportGoWhere** payout calculator  
 ✅ **Cross-browser testing** using Selenium WebDriver  
 ✅ **Data-driven testing** using Cucumber Scenarios & Examples  
-✅ **Assertions** using Chai for precise validation  
 ✅ **Allure Reporting** for detailed test execution reports  
 
 ## 🛠 Tech Stack
 - **WebdriverIO** - Test automation framework  
 - **Mocha** - JavaScript test framework  
 - **Cucumber** - BDD test structure  
-- **Chai** - Assertion library  
 - **Selenium WebDriver** - Web automation  
 - **Allure Reporter** - Test reporting  
 - **Node.js & NPM** - JavaScript runtime & package manager  
@@ -62,25 +59,19 @@ npm install
 ## 🚀 Running the Tests
 ### Run All Tests
 ```bash
-npx wdio wdio.conf.js
-```
-
-### Run Tests with Specific Tags
-```bash
-npx wdio wdio.conf.js --cucumberOpts.tagExpression="@payout"
+npm run test
 ```
 
 ## 📊 Generating Allure Reports
 ### 1️⃣ Execute Tests & Generate Results
 ```bash
-npx wdio wdio.conf.js
+npm run test
 ```
 > This creates the `allure-results/` folder.
 
 ### 2️⃣ Generate & Open the Allure Report
 ```bash
-npx allure generate allure-results --clean
-npx allure open
+allure generate allure-results --clean && allure open
 ```
 
 ## 📁 Sharing Reports
