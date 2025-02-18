@@ -1,0 +1,115 @@
+
+# Cash - Assurance Package Payouts Test Automation Framework
+
+A test automation framework using **WebdriverIO, Mocha, Cucumber, Chai, and Selenium WebDriver** for verifying quantum payouts on the **SupportGoWhere (SGW) website**.
+
+## 📜 Table of Contents
+- [📌 Features](#features)
+- [🛠 Tech Stack](#tech-stack)
+- [📂 Project Structure](#project-structure)
+- [⚡ Setup & Installation](#setup--installation)
+- [🚀 Running the Tests](#running-the-tests)
+- [📊 Generating Allure Reports](#generating-allure-reports)
+- [📁 Sharing Reports](#sharing-reports)
+- [📌 Test Scenarios](#test-scenarios)
+- [🤝 Contribution](#contribution)
+- [📄 License](#license)
+
+## 📌 Features
+✅ **Automated UI Testing** for **SupportGoWhere** payout calculator  
+✅ **Cross-browser testing** using Selenium WebDriver  
+✅ **Data-driven testing** using Cucumber Scenarios & Examples  
+✅ **Assertions** using Chai for precise validation  
+✅ **Allure Reporting** for detailed test execution reports  
+
+## 🛠 Tech Stack
+- **WebdriverIO** - Test automation framework  
+- **Mocha** - JavaScript test framework  
+- **Cucumber** - BDD test structure  
+- **Chai** - Assertion library  
+- **Selenium WebDriver** - Web automation  
+- **Allure Reporter** - Test reporting  
+- **Node.js & NPM** - JavaScript runtime & package manager  
+
+## 📂 Project Structure
+```
+📦 Cash-Assurance-Payouts-Automation
+ ┣ 📂 features
+ ┃ ┣ 📜 cash-assurance.feature     # Cucumber feature file
+ ┣ 📂 step-definitions
+ ┃ ┣ 📜 cashAssuranceSteps.js      # Step definitions
+ ┣ 📂 pages
+ ┃ ┣ 📜 calculatorPage.js          # Page Object Model (POM) for calculator
+ ┣ 📂 reports
+ ┃ ┣ 📜 allure-results/            # Allure results stored here
+ ┣ 📜 wdio.conf.js                 # WebdriverIO Configuration
+ ┣ 📜 package.json                 # Project dependencies & scripts
+ ┣ 📜 README.md                    # Project Documentation
+```
+
+## ⚡ Setup & Installation
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/mkan5883/Cash-Assurance-Package-Payouts.git
+cd Cash-Assurance-Package-Payouts
+```
+
+### 2️⃣ Install Dependencies
+```bash
+npm install
+```
+
+## 🚀 Running the Tests
+### Run All Tests
+```bash
+npx wdio wdio.conf.js
+```
+
+### Run Tests with Specific Tags
+```bash
+npx wdio wdio.conf.js --cucumberOpts.tagExpression="@payout"
+```
+
+## 📊 Generating Allure Reports
+### 1️⃣ Execute Tests & Generate Results
+```bash
+npx wdio wdio.conf.js
+```
+> This creates the `allure-results/` folder.
+
+### 2️⃣ Generate & Open the Allure Report
+```bash
+npx allure generate allure-results --clean
+npx allure open
+```
+
+## 📁 Sharing Reports
+To share the **Allure Report**:  
+1. **Zip the `allure-report` folder**  
+   ```bash
+   zip -r allure-report.zip allure-report/
+   ```
+2. **Send the ZIP file to teammates**  
+3. **To view the report**, run:
+   ```bash
+   unzip allure-report.zip
+   npx http-server allure-report
+   ```
+
+## 📌 Test Scenarios
+The framework automates the following test cases:
+
+| Test Case | Description |
+|-----------|------------|
+| Verify payout for users who own **one or no property** | Checks correct payout calculation |
+| Verify payout for users who **own more than one property** | Ensures proper payout limits |
+| Verify payout for **users under 20 years of age** | Validates eligibility logic |
+
+For detailed scenarios, refer to **[`features/cash-assurance.feature`](features/cash-assurance.feature)**.
+
+## 🤝 Contribution
+🔹 **Fork the repository**  
+🔹 **Create a feature branch** (`git checkout -b feature-name`)  
+🔹 **Commit changes** (`git commit -m "Add new feature"`)  
+🔹 **Push to remote** (`git push origin feature-name`)  
+🔹 **Submit a Pull Request (PR)**  
