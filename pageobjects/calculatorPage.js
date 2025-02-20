@@ -39,17 +39,26 @@ class CalculatorPage extends Page {
     return $('//span[text()="Show estimated benefits"]//parent::button');
   }
 
-  get getCashAssurnacePackage () {
-    return $('(//span[text()="Cash - Assurance Package"])[1]/parent::a/parent::div/parent::div/following-sibling::span');
+  get getCashAssurancePackageModal() {
+    return $('//span[text()="Cash - Assurance Package"]/parent::a/parent::div/parent::div/parent::div');
   }
 
 
   // Click the "Start" button
   async clickStartButton() {
-    await this.getStartButton.waitForDisplayed({ timeout: 5000 });
-    await this.getStartButton.waitForClickable({ timeout: 5000 });
-    await this.getStartButton.scrollIntoView();
-    await this.getStartButton.click();
+    try {
+      await this.getStartButton.waitForDisplayed({ timeout: 5000 });
+      await this.getStartButton.waitForClickable({ timeout: 5000 });
+      await this.getStartButton.scrollIntoView();
+      await this.getStartButton.click();
+
+    } catch(error) {
+      await this.getStartButton.waitForDisplayed({ timeout: 5000 });
+      await this.getStartButton.waitForClickable({ timeout: 5000 });
+      await this.getStartButton.scrollIntoView();
+      await this.getStartButton.click();
+    }
+    
   }
 
   // Fill in the calculator form fields
@@ -116,6 +125,10 @@ class CalculatorPage extends Page {
         }
       }
     return payoutText;
+    }
+
+    async isCashAssurncPackageDisplayed() {
+      return await this.getCashAssurancePackageModal.isDisplayed();
     }
 }
 

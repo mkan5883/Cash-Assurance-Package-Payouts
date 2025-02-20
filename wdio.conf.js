@@ -1,3 +1,5 @@
+const allure = require('@wdio/allure-reporter').default;
+
 exports.config = {
     //
     // ====================
@@ -50,7 +52,10 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+        args: ['--disable-extensions']  // Disable Chrome extensions
+      }
     }],
 
     //
@@ -130,8 +135,9 @@ exports.config = {
           {
             outputDir: 'allure-results',
             disableMochaHooks: true,
+            useCucumberStepReporter: true,
             disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
           },
         ],
       ],
@@ -217,8 +223,9 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+      await browser.maximizeWindow();
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
@@ -263,8 +270,16 @@ exports.config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: async function (step, scenario, result, context) {
+      if (!result.passed) { // Take screenshot only on failure
+        const screenshot = await browser.takeScreenshot();
+        allure.addAttachment(
+            'Failure Screenshot', 
+            Buffer.from(screenshot, 'base64'), 
+            'image/png'
+        );
+      }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.

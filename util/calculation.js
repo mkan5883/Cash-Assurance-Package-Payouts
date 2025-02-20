@@ -1,8 +1,6 @@
 const payoutSchema = require('../data/payoutSchema');
 
 function calculateCashAssurnacePackage(birthYear, income, ownsMoreThanOneProperty, referenceYear) {
-    birthYear = parseInt(birthYear, 10);
-    referenceYear = parseInt(referenceYear, 10);
     if (referenceYear - birthYear < 20) {
       return 0;
     }
